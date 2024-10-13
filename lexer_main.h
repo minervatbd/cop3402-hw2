@@ -1,6 +1,6 @@
 #ifndef LEXER_MAIN_H
 #define LEXER_MAIN_H
 
-#include lexer.h
+#include "lexer.h"
 
 #endif
