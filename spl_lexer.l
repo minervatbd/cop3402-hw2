@@ -88,9 +88,9 @@ MINUS           \-
 MULT            \*
 DIV             \/
 
-PUNCTUATION     [\.;=,(:=)\(\)]
-RESERVEDWORD    [(const)(var)(proc)(call)(begin)(end)(if)(then)(else)(while)(do)(read)(print)(skip)(divisible)(by)]
-RELOPS          [(==)(!=)<(<=)>(>=)]
+PUNCTUATION     [\.;=,\(\)]|:=
+RESERVEDWORD    const|var|proc|call|begin|end|if|then|else|while|do|read|print|skip|divisible|by
+RELOPS          ==|!=|<=|<|>=|>
 
 BLANK           ( )
 TAB             \t
