@@ -78,6 +78,32 @@ static void number2ast(unsigned int val)
 
  /* you can add actual definitions below, before the %% */
 
+DIGIT   	    [0-9]
+NUMBER          {DIGIT}({DIGIT}*)
+LETTER		    [a-zA-Z]
+LETTERORDIGIT	({LETTER}|{DIGIT})
+IDENT		    {LETTER}({LETTERORDIGIT}*)
+PLUS            \+
+MINUS           \-
+MULT            \*
+DIV             \/
+
+PUNCTUATION     [\.;=,(:=)\(\)]
+RESERVEDWORD    [(const)(var)(proc)(call)(begin)(end)(if)(then)(else)(while)(do)(read)(print)(skip)(divisible)(by)]
+RELOPS          [(==)(!=)<(<=)>(>=)]
+
+BLANK           ( )
+TAB             \t
+VT              \v
+FORMFEED        \f
+CR              \r
+IGNORED         [{BLANK}{TAB}{VT}{FORMFEED}{CR}]
+NEWLINE         \n
+EOL             ({NEWLINE}|({CR}{NEWLINE}))
+PERCENTSIGN     %
+NONNL           [^\n]
+COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
+
 
 
  /* the rules section starts after the %% below */
