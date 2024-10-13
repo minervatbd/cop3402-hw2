@@ -12,9 +12,12 @@ int main(int argc, char** argv)
     // parse filename
     strcpy(filename, argv[1]);
 
+    // call lexer init
     lexer_init(filename);
 
+    // call lexer output
     lexer_output();
 
+    // we're done
     free(filename);
 }
