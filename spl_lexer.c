@@ -383,8 +383,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 1
-#define YY_END_OF_BUFFER 2
+#define YY_NUM_RULES 5
+#define YY_END_OF_BUFFER 6
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -392,27 +392,28 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[6] =
+static const flex_int16_t yy_accept[13] =
     {   0,
-        0,    0,    2,    1,    0
+        0,    0,    6,    4,    5,    4,    3,    1,    0,    2,
+        3,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
     {   0,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    4,    4,    4,
+        4,    4,    4,    4,    4,    4,    4,    1,    1,    1,
+        1,    1,    1,    1,    5,    5,    5,    5,    5,    5,
+        1,    1,    1,    1,    5,    5,    5,    5,    5,    1,
+        1,    5,    1,    5,    1,    5,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    5,    1,    5,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -429,35 +430,39 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[2] =
+static const YY_CHAR yy_meta[6] =
     {   0,
-        1
+        1,    1,    1,    2,    1
     } ;
 
-static const flex_int16_t yy_base[7] =
+static const flex_int16_t yy_base[15] =
     {   0,
-        0,    0,    2,    3,    3,    0
+        0,    0,   11,   12,   12,    8,    0,   12,    7,   12,
+        0,   12,    5,    6
     } ;
 
-static const flex_int16_t yy_def[7] =
+static const flex_int16_t yy_def[15] =
     {   0,
-        6,    6,    5,    5,    0,    5
+       12,    1,   12,   12,   12,   13,   14,   12,   13,   12,
+       14,    0,   12,   12
     } ;
 
-static const flex_int16_t yy_nxt[5] =
+static const flex_int16_t yy_nxt[18] =
     {   0,
-        4,    5,    3,    5
+        4,    5,    6,    7,    8,    9,    9,   11,   10,   10,
+       12,    3,   12,   12,   12,   12,   12
     } ;
 
-static const flex_int16_t yy_chk[5] =
+static const flex_int16_t yy_chk[18] =
     {   0,
-        6,    3,    5,    5
+        1,    1,    1,    1,    1,   13,   13,   14,    9,    6,
+        3,   12,   12,   12,   12,   12,   12
     } ;
 
 /* Table of booleans, true if rule could match eol. */
-static const flex_int32_t yy_rule_can_match_eol[2] =
+static const flex_int32_t yy_rule_can_match_eol[6] =
     {   0,
-0,     };
+0, 1, 0, 0, 0,     };
 
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
@@ -544,11 +549,11 @@ static void number2ast(unsigned int val)
     yylval = t;
 }
 
-#line 547 "spl_lexer.c"
+#line 552 "spl_lexer.c"
 #line 80 "spl_lexer.l"
  /* you can add actual definitions below, before the %% */
  /* the rules section starts after the %% below */
-#line 551 "spl_lexer.c"
+#line 556 "spl_lexer.c"
 
 #define INITIAL 0
 
@@ -778,11 +783,7 @@ YY_DECL
 #line 112 "spl_lexer.l"
 
 
- /* fill in the rules for your lexer below! */
-
-
-
-#line 785 "spl_lexer.c"
+#line 786 "spl_lexer.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -809,13 +810,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 6 )
+				if ( yy_current_state >= 13 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 3 );
+		while ( yy_base[yy_current_state] != 12 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -851,10 +852,44 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 118 "spl_lexer.l"
+#line 114 "spl_lexer.l"
+{;}
+	YY_BREAK
+case 2:
+/* rule 2 can match eol */
+YY_RULE_SETUP
+#line 115 "spl_lexer.l"
+{;} /* skip whitespace/comments */
+	YY_BREAK
+case 3:
+YY_RULE_SETUP
+#line 120 "spl_lexer.l"
+{int num = atoi(yytext);
+             char buffer[256];
+             if(num > INT_MAX){
+                sprintf(buffer, "Number (%d) is too large!", num);
+                yyerror(lexer_filename(), buffer);
+             }
+             else{
+                number2ast(num);
+                return num;
+             }
+}
+	YY_BREAK
+case 4:
+YY_RULE_SETUP
+#line 132 "spl_lexer.l"
+{char buffer[256];
+     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     yyerror(lexer_filename(), buffer);}
+	YY_BREAK
+/* fill in the rules for your lexer below! */
+case 5:
+YY_RULE_SETUP
+#line 140 "spl_lexer.l"
 ECHO;
 	YY_BREAK
-#line 857 "spl_lexer.c"
+#line 892 "spl_lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1151,7 +1186,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 6 )
+			if ( yy_current_state >= 13 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1179,11 +1214,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 6 )
+		if ( yy_current_state >= 13 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 5);
+	yy_is_jam = (yy_current_state == 12);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1871,7 +1906,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 118 "spl_lexer.l"
+#line 140 "spl_lexer.l"
 
  /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
  /* This code goes in the user code section of the spl_lexer.l file,
