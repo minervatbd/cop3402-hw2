@@ -110,12 +110,34 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
 
 %%
 
+{IGNORED}   {;}
+{COMMENT}   {;} /* skip whitespace and comments */
+
+
+
+
+{NUMBER}    {int num = atoi(yytext);
+             char buffer[256];
+             if(num > INT_MAX){
+                sprintf(buffer, "Number (%d) is too large!", num);
+                yyerror(lexer_filename(), buffer);
+             }
+             else{
+                number2ast(num);
+                return num;
+             }
+}
+
+.   {char buffer[256];
+     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     yyerror(lexer_filename(), buffer);}
+
  /* fill in the rules for your lexer below! */
 
-/* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
+
 
 %%
-
+ /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
  /* This code goes in the user code section of the spl_lexer.l file,
    following the last %% above. */
 
