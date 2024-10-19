@@ -110,6 +110,28 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
 
 %%
 
+
+
+
+
+
+
+{NUMBER}    {int num = atoi(yytext);
+             char buffer[256];
+             if(num > INT_MAX){
+                sprintf(buffer, "Number (%d) is too large!", num);
+                yyerror(lexer_filename(), buffer);
+             }
+             else{
+                number2ast(num);
+                return num;
+             }
+}
+
+.   {char buffer[256];
+     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     yyerror(lexer_filename(), buffer);}
+
  /* fill in the rules for your lexer below! */
 
 
