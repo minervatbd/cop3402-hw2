@@ -112,10 +112,10 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
 
  /* fill in the rules for your lexer below! */
 
-/* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
+
 
 %%
-
+ /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
  /* This code goes in the user code section of the spl_lexer.l file,
    following the last %% above. */
 
