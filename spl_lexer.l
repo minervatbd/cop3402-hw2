@@ -126,10 +126,6 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
              }
 }
 
-.   {char buffer[256];
-     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
-     yyerror(lexer_filename(), buffer);}
-
  /* fill in the rules for your lexer below! */
 
 \+              { tok2ast(plussym); return plussym; }
@@ -168,6 +164,9 @@ by              { tok2ast(bysym); return bysym; }
 \>=             { tok2ast(geqsym); return geqsym; }
 \>              { tok2ast(gtsym); return gtsym; }
 
+.   {char buffer[256];
+     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     yyerror(lexer_filename(), buffer);}
 
 %%
  /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
