@@ -97,7 +97,7 @@ TAB             \t
 VT              \v
 FORMFEED        \f
 CR              \r
-IGNORED         [{BLANK}{TAB}{VT}{FORMFEED}{CR}]
+IGNORED         [ {TAB}{VT}{FORMFEED}{CR}]
 NEWLINE         \n
 EOL             ({NEWLINE}|({CR}{NEWLINE}))
 PERCENTSIGN     %
