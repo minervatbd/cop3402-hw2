@@ -135,9 +135,9 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
 
 .               { tok2ast(periodsym); return periodsym; }
 \;              { tok2ast(semisym); return semisym; }
-==              { tok2ast(eqsym); return eqsym; }
+=               { tok2ast(eqsym); return eqsym; }
 ,               { tok2ast(commasym); return commasym; }
-=               { tok2ast(becomessym); return becomessym; }
+:=              { tok2ast(becomessym); return becomessym; }
 \(              { tok2ast(lparensym); return lparensym; }
 \)              { tok2ast(rparensym); return rparensym; }
 
@@ -161,8 +161,8 @@ by              { tok2ast(bysym); return bysym; }
 !=              { tok2ast(neqsym); return neqsym; }
 \<              { tok2ast(ltsym); return ltsym; }
 \<=             { tok2ast(leqsym); return leqsym; }
-\>=             { tok2ast(geqsym); return geqsym; }
 \>              { tok2ast(gtsym); return gtsym; }
+\>=             { tok2ast(geqsym); return geqsym; }
 
 .   {char buffer[256];
      sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
