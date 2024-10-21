@@ -108,8 +108,9 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
 
 %%
 
-{IGNORED}   {;}
-{COMMENT}   {;} /* skip whitespace and comments */
+{IGNORED}   { ; }
+{COMMENT}   { ; } /* skip whitespace and comments */
+{EOL}       { ; }
 
 
 
