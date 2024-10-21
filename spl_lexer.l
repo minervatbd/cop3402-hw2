@@ -107,34 +107,17 @@ COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
  /* the rules section starts after the %% below */
 
 %%
-
-{IGNORED}   { ; }
-{COMMENT}   { ; } /* skip whitespace and comments */
-{EOL}       { ; }
-
-
-
-
-{NUMBER}    {int num = atoi(yytext);
-             char buffer[256];
-             if(num > INT_MAX){
-                sprintf(buffer, "Number (%d) is too large!", num);
-                yyerror(lexer_filename(), buffer);
-             }
-             else{
-                number2ast(num);
-                return num;
-             }
-}
-
  /* fill in the rules for your lexer below! */
+{IGNORED}   { ; }
+{COMMENT}   { ; } 
+{EOL}       { ; }
 
 \+              { tok2ast(plussym); return plussym; }
 -               { tok2ast(minussym); return minussym; }
 \*              { tok2ast(multsym); return multsym; }
 \/              { tok2ast(divsym); return divsym; }  
 
-.               { tok2ast(periodsym); return periodsym; }
+\.              { tok2ast(periodsym); return periodsym; }
 \;              { tok2ast(semisym); return semisym; }
 =               { tok2ast(eqsym); return eqsym; }
 ,               { tok2ast(commasym); return commasym; }
@@ -165,9 +148,24 @@ by              { tok2ast(bysym); return bysym; }
 \>              { tok2ast(gtsym); return gtsym; }
 \>=             { tok2ast(geqsym); return geqsym; }
 
+{NUMBER}    {int num = atoi(yytext);
+             char buffer[256];
+             if(num > INT_MAX){
+                sprintf(buffer, "Number (%d) is too large!", num);
+                yyerror(lexer_filename(), buffer);
+             }
+             else{
+                number2ast(numbersym);
+                return numbersym;
+             }
+            }
+
+{IDENT}     { ident2ast(yytext); return identsym;}   
+
 .   {char buffer[256];
      sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
-     yyerror(lexer_filename(), buffer);}
+     yyerror(lexer_filename(), buffer);
+     return YYUNDEF;}
 
 %%
  /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
