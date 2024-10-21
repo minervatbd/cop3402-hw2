@@ -1113,15 +1113,14 @@ YY_RULE_SETUP
 #line 166 "spl_lexer.l"
 {char buffer[256];
      sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
-     yyerror(lexer_filename(), buffer);
-     return YYUNDEF;}
+     yyerror(lexer_filename(), buffer);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 171 "spl_lexer.l"
+#line 170 "spl_lexer.l"
 ECHO;
 	YY_BREAK
-#line 1124 "spl_lexer.c"
+#line 1123 "spl_lexer.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2138,7 +2137,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 171 "spl_lexer.l"
+#line 170 "spl_lexer.l"
 
  /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
  /* This code goes in the user code section of the spl_lexer.l file,

@@ -164,8 +164,7 @@ by              { tok2ast(bysym); return bysym; }
 
 .   {char buffer[256];
      sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
-     yyerror(lexer_filename(), buffer);
-     return YYUNDEF;}
+     yyerror(lexer_filename(), buffer);}
 
 %%
  /* $Id: spl_lexer_user_code.c,v 1.4 2024/10/06 18:43:01 leavens Exp leavens $ */
