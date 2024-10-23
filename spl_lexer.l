@@ -97,12 +97,12 @@ TAB             \t
 VT              \v
 FORMFEED        \f
 CR              \r
-IGNORED         [ {TAB}{VT}{FORMFEED}{CR}]
+IGNORED         [ ]|{TAB}|{VT}|{FORMFEED}|{CR}
 NEWLINE         \n
 EOL             ({NEWLINE}|({CR}{NEWLINE}))
 PERCENTSIGN     %
 NONNL           [^\n]
-COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
+COMMENT         {PERCENTSIGN}({NONNL}*){NEWLINE}
 
  /* the rules section starts after the %% below */
 
@@ -148,22 +148,21 @@ by              { tok2ast(bysym); return bysym; }
 \>              { tok2ast(gtsym); return gtsym; }
 \>=             { tok2ast(geqsym); return geqsym; }
 
-{NUMBER}    {int num = atoi(yytext);
+{NUMBER}    {
              char buffer[256];
-             if(num > INT_MAX){
-                sprintf(buffer, "Number (%d) is too large!", num);
+             number2ast(numbersym);
+             if(numbersym > INT_MAX){
+                sprintf(buffer, "Number (%s) is too large!", yytext);
                 yyerror(lexer_filename(), buffer);
              }
-             else{
-                number2ast(numbersym);
-                return numbersym;
-             }
+
+             return numbersym;
             }
 
 {IDENT}     { ident2ast(yytext); return identsym;}   
 
 .   {char buffer[256];
-     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     sprintf(buffer, "invalid character: '%c' ('\\0%o')", *yytext, *yytext);
      yyerror(lexer_filename(), buffer);}
 
 %%
