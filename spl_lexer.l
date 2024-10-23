@@ -150,7 +150,7 @@ by              { tok2ast(bysym); return bysym; }
 
 {NUMBER}    {
              char buffer[256];
-             if(yylval > INT_MAX){
+             if(*yylval > INT_MAX){
                 sprintf(buffer, "Number (%s) is too large!", yytext);
                 yyerror(lexer_filename(), buffer);
              }
