@@ -97,12 +97,12 @@ TAB             \t
 VT              \v
 FORMFEED        \f
 CR              \r
-IGNORED         [ {TAB}{VT}{FORMFEED}{CR}]
+IGNORED         [ ]|{TAB}|{VT}|{FORMFEED}|{CR}
 NEWLINE         \n
 EOL             ({NEWLINE}|({CR}{NEWLINE}))
 PERCENTSIGN     %
 NONNL           [^\n]
-COMMENT         {PERCENTSIGN}{NONNL}*{NEWLINE}
+COMMENT         {PERCENTSIGN}({NONNL}*){NEWLINE}
 
  /* the rules section starts after the %% below */
 
@@ -150,13 +150,12 @@ by              { tok2ast(bysym); return bysym; }
 
 {NUMBER}    {
              char buffer[256];
-             if(yylval > INT_MAX){
+             number2ast(numbersym);
+             if(numbersym > INT_MAX){
                 sprintf(buffer, "Number (%s) is too large!", yytext);
                 yyerror(lexer_filename(), buffer);
              }
-             else{
-                number2ast(numbersym);
-             }
+
              return numbersym;
             }
 
