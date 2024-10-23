@@ -1091,16 +1091,16 @@ YY_RULE_SETUP
 case 36:
 YY_RULE_SETUP
 #line 152 "spl_lexer.l"
-{int num = atoi(yytext);
+{
              char buffer[256];
-             if(num > INT_MAX){
-                sprintf(buffer, "Number (%d) is too large!", num);
+             if(yylval > INT_MAX){
+                sprintf(buffer, "Number (%s) is too large!", yytext);
                 yyerror(lexer_filename(), buffer);
              }
              else{
                 number2ast(numbersym);
-                return numbersym;
              }
+             return numbersym;
             }
 	YY_BREAK
 case 37:
@@ -1112,7 +1112,7 @@ case 38:
 YY_RULE_SETUP
 #line 166 "spl_lexer.l"
 {char buffer[256];
-     sprintf(buffer, "Invalid character: '%c' ('\\%o')", *yytext, *yytext);
+     sprintf(buffer, "Invalid character: '%c' ('\\0%o')", *yytext, *yytext);
      yyerror(lexer_filename(), buffer);}
 	YY_BREAK
 case 39:
