@@ -163,7 +163,7 @@ by              { tok2ast(bysym); return bysym; }
 {IDENT}     { ident2ast(yytext); return identsym;}   
 
 .   {char buffer[256];
-     sprintf(buffer, "Invalid character: '%c' ('\\0%o')", *yytext, *yytext);
+     sprintf(buffer, "invalid character: '%c' ('\\0%o')", *yytext, *yytext);
      yyerror(lexer_filename(), buffer);}
 
 %%

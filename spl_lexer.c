@@ -1112,7 +1112,7 @@ case 38:
 YY_RULE_SETUP
 #line 166 "spl_lexer.l"
 {char buffer[256];
-     sprintf(buffer, "Invalid character: '%c' ('\\0%o')", *yytext, *yytext);
+     sprintf(buffer, "invalid character: '%c' ('\\0%o')", *yytext, *yytext);
      yyerror(lexer_filename(), buffer);}
 	YY_BREAK
 case 39:
